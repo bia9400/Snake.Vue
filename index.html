@@ -41,7 +41,11 @@
       </div>
       <div class="col">
         <div class="mycontainer">
-          <div class="snake" v-for="snake in snakeArray" :style="`left:${positionX}px;top:${positionY}px;`" ></div>
+          <div class="snake"  :style="`left:${positionX}px;top:${positionY}px;`" >
+            <!-- v-for="snake in snakeArray" inserire sopra in snake e togliere il commento nella funzione snakeArrayPush() per capire il funzoinamento -->
+            <!-- Devo riuscire a passare al posto di positionX e positionY il valore appena caricato nello snackeArray, il quale essendo caricato 
+                 con un timeout di 1ms dovrebbe resttuire la posizione esatta, consentendo al vFor di attaccare i vari cubettini -->
+          </div>
           
           <div :style="`left:${ballRandomX}px;top:${ballRandomY}px;${bonusBall}`" class="pallina"></div>
         </div>

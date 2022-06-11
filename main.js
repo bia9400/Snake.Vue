@@ -30,7 +30,7 @@ new Vue({
         resetPosition() {
             this.positionX = 0
             this.positionY = 0
-            this.counterBonusBall=0
+            this.counterBonusBall = 0
         },
         isrecord(value) {
             if (value > this.record) {
@@ -70,7 +70,9 @@ new Vue({
                 if (snakeY <= ballY + 20 && snakeY >= ballY - 20) {
                     this.snakeArrayPush()
                     console.log(this.snakeArray);
+
                     return true
+
                 }
             }
         },
@@ -79,11 +81,20 @@ new Vue({
                 x: this.positionX,
                 y: this.positionY
             })
+            /* Se tolgo i commenti e rimuovo il push sopra, riesco ad attaccare più quadratini al serpente, ma non avendo dato al V-for la posizione
+                del nuovo array come coordinate, questo li attacchera in modo sbagliato...per capire meglio togliere il commento ed eliminare il push sopra */
+            /* setTimeout(() => {
+                this.snakeArray.push({
+                    x: this.positionX,
+                    y: this.positionY
+                })
+            }, 1); */
 
         },
-        setRedall(){
-            this.bonusBall="background-color:red;"
+        setRedall() {
+            this.bonusBall = "background-color:red;"
         },
+
 
 
         snakeMovements(event) {
@@ -147,17 +158,17 @@ new Vue({
                     this.counterBonusBall++
                     this.score += this.difficultyPoints;
                     if (this.counterBonusBall == 10) {
-                        
+
                         this.setRedall()
-                        
+
                     }
-                    else if(this.counterBonusBall == 11){
-                        this.score+=80
-                        this.counterBonusBall=0
-                        this.bonusBall=""
+                    else if (this.counterBonusBall == 11) {
+                        this.score += 80
+                        this.counterBonusBall = 0
+                        this.bonusBall = ""
                     }
-                    else{
-                        this.bonusBall=""
+                    else {
+                        this.bonusBall = ""
                     }
                 }
 

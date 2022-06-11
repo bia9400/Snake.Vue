@@ -29,6 +29,12 @@ body {
   border-radius: 50%;
 }
 .snake{
+  position: relative;
+  height: 30px;
+  aspect-ratio: 1;
+  background-color: black;
+}
+.snake-parent{
   position: absolute;
   height: 30px;
   aspect-ratio: 1;
