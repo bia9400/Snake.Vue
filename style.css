@@ -1,0 +1,39 @@
+:root{
+  --x: rgb(0, 0, 0);
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vW;
+  color: white;
+ background-color: var(--x);
+}
+.mycontainer{
+  position: relative;
+  margin: auto;
+  width: 1500px;
+  height: 800px;
+  color: black;
+  background-color: white;
+  
+}
+.pallina{
+  position: absolute;
+  
+  height: 20px;
+  aspect-ratio: 1;
+  background-color: black;
+  border-radius: 50%;
+}
+.snake{
+  position: absolute;
+  height: 30px;
+  aspect-ratio: 1;
+  background-color: black;
+}
+.row{
+  width: 100vW;
+}

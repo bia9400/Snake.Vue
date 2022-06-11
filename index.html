@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js'
+    integrity='sha512-pSyYzOKCLD2xoGM1GwkeHbdXgMRVsSqQaaUoHskx/HF09POwvow2VfVEdARIYwdeFLbu+2FCOTRYuiyeGxXkEg=='
+    crossorigin='anonymous'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/js/bootstrap.min.js'
+    integrity='sha512-Hqe3s+yLpqaBbXM6VA0cnj/T56ii5YjNrMT9v+us11Q81L0wzUG0jEMNECtugqNu2Uq5MSttCg0p4KK0kCPVaQ=='
+    crossorigin='anonymous'></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap.css'
+    integrity='sha512-F5fn88UDJWd0T1GwpnIpbuFuSxCgXNnJhIihkiWeqYUyLt3oPUaYzL774VjL7eGj8ktZCZQS//txAxgokiz1Lw=='
+    crossorigin='anonymous' />
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="text-center">SNAKE</h1>
+    <div class="row">
+      <div class="col">
+        <div class="difficulty mb-3 px-3">
+          <label for=""><h6>Scegli la difficoltà:</h6></label>
+          <select v-model="selected" class="form-select " aria-label="Default select example">
+            
+            <option v-for="product in products" v-bind:value="{ id: product.id, text: product.name }">
+              {{ product.name }}
+            </option>
+            
+          </select>
+        </div>
+        
+        <div class="text-center">
+          <input v-on:click="setdifficulty()" class="btn btn-danger px-3 my-3" type="button" value="Start">
+        </div>
+      </div>
+      <div class="col">
+        <div class="mycontainer">
+          <div class="snake" v-for="snake in snakeArray" :style="`left:${positionX}px;top:${positionY}px;`" ></div>
+          
+          <div :style="`left:${ballRandomX}px;top:${ballRandomY}px;`" class="pallina"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="score">
+          <h3 class="text-center">Score</h3>
+        <h2 class="text-center" v-text="score"></h2>
+        <h3 class="text-center">Record</h3>
+        <h2 class="text-center" v-text="record"></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>
