@@ -5,8 +5,8 @@ new Vue({
         positionX: 0,
         positionY: 0,
         snakeArray: [{
-            x: this.positionX,
-            y: this.positionY
+            x: 0,
+            y: 0
         }],
         selected: "",
         products: [
@@ -17,18 +17,20 @@ new Vue({
         ],
         ballRandomX: 150,
         ballRandomY: 200,
-        
+        bonusBall: "",
         control: false,
         catched: false,
         score: 0,
         difficolta: 0,
         difficultyPoints: 0,
         record: 0,
+        counterBonusBall: 0,
     },
     methods: {
         resetPosition() {
             this.positionX = 0
             this.positionY = 0
+            this.counterBonusBall=0
         },
         isrecord(value) {
             if (value > this.record) {
@@ -66,19 +68,23 @@ new Vue({
         isGotcha(ballX, ballY, snakeX, snakeY) {
             if (snakeX <= ballX + 20 && snakeX >= ballX - 20) {
                 if (snakeY <= ballY + 20 && snakeY >= ballY - 20) {
-                    this.snakeLenght()
+                    this.snakeArrayPush()
                     console.log(this.snakeArray);
                     return true
                 }
             }
         },
-        snakeLenght() {
+        snakeArrayPush() {
             this.snakeArray.push({
-                x:this.positionX,
-                y:this.positionY
+                x: this.positionX,
+                y: this.positionY
             })
 
         },
+        setRedall(){
+            this.bonusBall="background-color:red;"
+        },
+
 
         snakeMovements(event) {
             console.log(this.positionX, this.positionY);
@@ -138,7 +144,21 @@ new Vue({
                 }
                 if (this.isGotcha(this.ballRandomX, this.ballRandomY, this.positionX, this.positionY)) {
                     this.randomPosition()
+                    this.counterBonusBall++
                     this.score += this.difficultyPoints;
+                    if (this.counterBonusBall == 10) {
+                        
+                        this.setRedall()
+                        
+                    }
+                    else if(this.counterBonusBall == 11){
+                        this.score+=80
+                        this.counterBonusBall=0
+                        this.bonusBall=""
+                    }
+                    else{
+                        this.bonusBall=""
+                    }
                 }
 
             }, 1);
